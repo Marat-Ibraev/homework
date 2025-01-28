@@ -1,12 +1,11 @@
 from typing import List, Dict
 
+
 def filter_by_state(list_dict: List[Dict], value_key: str = "EXECUTED") -> List[Dict]:
     """функция возвращает новый список словарей, у которых ключ state
     соответствует указанному значению, по умолчанию 'EXECUTED'
     """
     new_list_dict = []
-
-
     for every_dict in list_dict:
         if every_dict["state"] == value_key:
             new_list_dict.append(every_dict)

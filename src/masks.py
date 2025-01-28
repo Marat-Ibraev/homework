@@ -1,5 +1,5 @@
-card_number = input("Введите номер карты ")
-account_number = input("Введите номер счета ")
+#card_number = input("Введите номер карты ")
+#account_number = input("Введите номер счета ")
 
 
 def get_mask_card_number(card_number):
