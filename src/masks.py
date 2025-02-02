@@ -21,7 +21,7 @@ def get_mask_card_number(card_number: str) -> str:
         return "Неверный номер карты!"
 
 
-def get_mask_account(account_number: Union[int, str]) -> str:
+def get_mask_account(account_number: str) -> str:
     """
     маскировка номера счета
     """
