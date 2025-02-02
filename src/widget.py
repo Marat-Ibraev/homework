@@ -1,7 +1,9 @@
+from typing import Union
+
 from src.masks import get_mask_account, get_mask_card_number
 
 
-def mask_account_card(user_input):
+def mask_account_card(user_input: Union[str]) -> str:
     """
     маскировка данных
     """
@@ -18,7 +20,7 @@ def mask_account_card(user_input):
     return f"{type_card} {number_card}"
 
 
-def get_date(date_user_input):
+def get_date(date_user_input: Union[str]) -> str:
     """
     обработка даты
     """

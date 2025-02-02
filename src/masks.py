@@ -1,4 +1,7 @@
-def get_mask_card_number(card_number):
+from typing import Union
+
+
+def get_mask_card_number(card_number: str) -> str:
     """
     маскировка номера карты
     """
@@ -18,7 +21,7 @@ def get_mask_card_number(card_number):
         return "Неверный номер карты!"
 
 
-def get_mask_account(account_number):
+def get_mask_account(account_number: Union[int, str]) -> str:
     """
     маскировка номера счета
     """

@@ -21,4 +21,18 @@ mypy = "^1.14.1"
 black = "^24.10.0"
 isort = "^5.13.2"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
 
+
+[tool.mypy]
+exclude = '.venv'
+show_error_codes = true
+ignore_missing_imports = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+warn_unused_ignores = true
+warn_no_return = false
+warn_unreachable = true
+no_implicit_optional = true
+allow_redefinition = true
