@@ -21,8 +21,8 @@
 
 # Домашнее задание 10.2 Тестирование в pytest
 ## Описание:
-В проекте были добавлены тесты: test_masks, test_widget, test_processing.
-Так же был изменен файл README.MD.
+В проект были добавлены тесты: test_masks, test_widget, test_processing.
+Так же был изменен файл README.MD
 Был создан файл conftest.py с фикстурами.
 
 ## Установка:
@@ -36,13 +36,6 @@ git@github.com:Marat-Ibraev/homework.git
 ```
 pip install -r requirements.txt
 ```
-
-## Тестирование:
-Проект покрыт тестами. Для их запуска выполните команду:
-```
-poetry run pytest --cov
-```
-
 ## Использование:
 
 Проверка домашнего задания.
