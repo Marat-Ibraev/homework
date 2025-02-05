@@ -36,6 +36,13 @@ git@github.com:Marat-Ibraev/homework.git
 ```
 pip install -r requirements.txt
 ```
+## Тестирование:
+Проект покрыт тестами. Для их запуска выполните команду:
+```
+poetry run pytest --cov
+```
+
 ## Использование:
 
 Проверка домашнего задания.
+
