@@ -3,6 +3,7 @@ from typing import Any, Callable, Optional
 
 
 def log(filename: Optional[str] = None) -> Callable:
+    """Декоратор, логирующий работу функции и её результат в консоль"""
 
     def logging_decorator(func: Callable) -> Callable:
         @wraps(func)
