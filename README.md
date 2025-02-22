@@ -50,6 +50,18 @@ card_number_generator
 Логирование включает в себя: Имя функции и результат выполнения функции при успешном выполнении.
 
 В test_decorators.py реализованы тесты для decorators.py
+
+# Домашнее задание 12.1 Библиотеки json, requests и datetime
+
+## Описание
+В проект добавлены файлы external.api.py, utils.py
+В external.py реализована функция которая обращается к внешнему API и производит конвертацию валюты.
+
+В utils.py реализованы функции convert_transactions и transaction_amount.
+
+convert_transactions принимает на вход путь до JSON-файла и возвращает список словарей
+
+transaction_amount возвращает сумму транзакции в рублях
 ## Установка:
 
 Клонируйте репозиторий:
