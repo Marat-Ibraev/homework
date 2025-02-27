@@ -82,6 +82,7 @@ def description():
     "Перевод с карты на карту"
     "Перевод организаци"
 
+
 @pytest.fixture
 def dictionary():
     return [
