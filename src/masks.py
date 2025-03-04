@@ -1,6 +1,5 @@
 import logging
 
-
 logger = logging.getLogger("masks_card_account")
 logger.setLevel(logging.DEBUG)
 file_handler = logging.FileHandler("../logs/masks_card_account.log", "w", encoding="utf-8")

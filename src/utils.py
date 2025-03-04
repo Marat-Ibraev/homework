@@ -1,9 +1,7 @@
 import json
-
-from src.external_api import convert_current
-
 import logging
 
+from src.external_api import convert_current
 
 logger = logging.getLogger("utils_log")
 logger.setLevel(logging.DEBUG)
