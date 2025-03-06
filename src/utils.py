@@ -1,52 +1,68 @@
 import json
 import logging
+import os
 
 from src.external_api import convert_current
 
+log_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs")
+os.makedirs(log_dir, exist_ok=True)
+log_file_utils = os.path.join(log_dir, "utils_log.log")
 logger = logging.getLogger("utils_log")
 logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler("../logs/utils_log.log", "w", encoding="utf-8")
+file_handler = logging.FileHandler(log_file_utils, "w", encoding="utf-8")
 file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 
-path = 'data/operations.json'
+file_path = "../data/operations.json"
 
 
-def convert_transactions(path: str) -> list:
-    """Функция принимает на вход путь до JSON-файла и возвращает список словарей"""
-    logger.info("Работа со словарем")
+def convert_transactions(file_path: str) -> list:
+    """
+    Функция, которая берет JSON файл и возвращает список словарей
+    """
+    logger.info("работаем со словарем")
     try:
-        with open(path, encoding="utf-8") as transactions_file:
+        with open(file_path, encoding='utf-8', errors='ignore') as f:
             try:
-                transactions = json.load(transactions_file)
+                transaction_list = json.load(f)
             except json.JSONDecodeError:
-                logger.error("Ошибка декодирования файла")
-                print("Ошибка декодирования файла")
+                logger.error("Файл не декодируется")
+                print("Файл не декодируется")
                 return []
     except FileNotFoundError:
-        logger.error("Файл не найден")
+        logger.error("файл не найден")
         print("Файл не найден")
         return []
-    logger.info(f"Результат: {transactions}")
-    return transactions
+    logger.info(f"получаем результат {transaction_list}")
+    return transaction_list
 
 
-def transaction_amount(transaction: dict) -> float:
+def transaction_amount(transaction_list: dict) -> float:
+    """
+    Функция, которая возвращает сумму транзакций в рублях.
+    """
     all_sum = 0
     logger.info("Суммируем все рубли и конвертируем доллары в рубли и их тоже суммируем")
-    for i in transaction:
+
+    if not isinstance(transaction_list, list):
+        logger.error("Передан не список транзакций")
+        return 0  # Если передан словарь или другая структура, возвращаем 0
+
+    for i in transaction_list:
         try:
             currency = i["operationAmount"]["currency"]["code"]
             amount = i["operationAmount"]["amount"]
+
             if currency == "RUB":
                 all_sum += float(amount)
             else:
-                alternative_summ = convert_current(currency, "RUB", amount)
-                if not alternative_summ == "Error":
+                alternative_summ = convert_current(currency, "RUB", float(amount))
+                if alternative_summ != "Error":
                     all_sum += float(alternative_summ)
-        except KeyError:
-            logger.warning("Превышен результат запросов по api ключу")
+        except (KeyError, TypeError, ValueError) as e:
+            logger.warning(f"Ошибка при обработке транзакции: {e}")
             continue
-    logger.info(f"Сумма всех транзакций: {all_sum}")
+
+    logger.info(f"Получаем сумму всех транзакций: {all_sum}")
     return all_sum

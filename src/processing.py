@@ -1,20 +1,18 @@
 from typing import Any, Dict, List
 
 
-def filter_by_state(list_dict: list, value_key: str = "EXECUTED") -> List[dict]:
-    """функция возвращает новый список словарей, у которых ключ state
-    соответствует указанному значению, по умолчанию 'EXECUTED'
+def filter_by_state(user_input: List[Dict[str, Any]], status: str = "EXECUTED") -> List[Dict[str, Any]]:
     """
-    new_list_dict = []
-    for every_dict in list_dict:
-        if every_dict["state"] == value_key:
-            new_list_dict.append(every_dict)
-    return new_list_dict  # возвращает отсортированный список
+    функция, которая возвращает новый список словарей, у которых ключ state соответствует указанному значению
+    """
+    new_user_input = []
+    for i in user_input:
+        if i.get("state") == status:
+            new_user_input.append(i)
+    return new_user_input  # возвращает отсортированный список.
 
 
-def sort_by_date(
-    user_input: List[Dict[str, Any]], reverse: bool = True
-) -> List[Dict[str, Any]]:
+def sort_by_date(user_input: List[Dict[str, Any]], reverse: bool = True) -> List[Dict[str, Any]]:
     """
     Функция, которая возвращает список отсортированный по дате.
     """

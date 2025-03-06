@@ -1,9 +1,11 @@
+from typing import Dict, List
+
 import pandas as pd
 
 
-def read_trans_csv(csv_file_path):
+def read_trans_csv(csv_file_path: str) -> List[Dict]:
     """
-    функиця, считывает данные из csv файла и возвращает список словарей с транзакциями.
+    функиця, которая считывает из csv файла и возвращает список словарей с транзакциями.
     """
     try:
         csv_data = pd.read_csv(csv_file_path, delimiter=";")
@@ -17,9 +19,9 @@ def read_trans_csv(csv_file_path):
     return operations_data
 
 
-def read_trans_excel(filepath):
+def read_trans_excel(filepath: str) -> List[Dict]:
     """
-    функция считывает данные из excel файла
+    Функция принимает на вход путь к файлу Excel и возвращает список словарей с транзакциями.
     """
     df = pd.read_excel(filepath)
     return df.to_dict(orient="records")
