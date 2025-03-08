@@ -88,8 +88,8 @@ def main():
     if not any(new_filter_trans):
         print('Не найдено ни одной транзакции, подходящей под ваши условия фильтрации')
         return
-
-    print(f'Всего банковских операций в выборке: {len(new_filter_trans)}')
+    list_trans = list(new_filter_trans)
+    print(f'Всего банковских операций в выборке: {len(list_trans)}')
 
     if menu == 1:
         for x in new_filter_trans:

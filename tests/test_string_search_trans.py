@@ -16,5 +16,5 @@ def test_search_transactions_not_found(sample_transactions):
 
 def test_count_transactions(sample_transactions, sample_categories):
     result = count_trans(sample_transactions, sample_categories)
-    expected = Counter({"Переводы": 3, "Оплата": 4, "Списание кредитов": 1})
+    expected = Counter({"Оплата": 4, "Переводы": 3, "Списание кредитов": 1})
     assert result == expected

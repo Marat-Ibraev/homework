@@ -20,7 +20,7 @@ def count_trans(transactions, categories):
     """
     categories_count = Counter()
     for i in transactions:
-        if "categories" in i:
+        if "description" in i:
             category = i["categories"]
             if category in categories:
                 categories_count[category] += 1
