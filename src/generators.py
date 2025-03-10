@@ -1,14 +1,14 @@
 from typing import Dict, Generator, List
 
 
-def filter_by_currency(not_sort_list: List[Dict], status: str = "USD") -> Generator[Dict, None, None]:
-    """
-    функция, которая сортирует по виду валюты
-    """
+def filter_by_currency(not_sort_list: List[Dict], status: str = "USD", with_json=True) -> Generator[Dict, None, None]:
     for transaction in not_sort_list:
-        wallet = transaction.get("operationAmount", {}).get("currency", {}).get("code")
+        if with_json:
+            wallet = transaction.get("operationAmount", {}).get("currency", {}).get("code")
+        else:
+            wallet = transaction.get("currency_code", {})
         if wallet == status:
-            yield transaction  # узнаем тип валюты
+            yield transaction
 
 
 def transaction_descriptions(not_sort_list: List[Dict]) -> Generator[str, None, None]:
