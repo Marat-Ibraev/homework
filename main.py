@@ -92,7 +92,7 @@ def main():
     print(f'Всего банковских операций в выборке: {len(list_trans)}')
 
     if menu == 1:
-        for x in new_filter_trans:
+        for x in list_trans:
             if x.get("description") == "Открытие вклада":
                 print(f'{x["date"]} {x["description"]}')
                 pattern = r'\b\d+\b'
@@ -128,7 +128,7 @@ def main():
                 print(f'{name_from} {numer_from_mask} -> {name_to} {numer_to_mask}')
                 print(f'Сумма: {x["operationAmount"]["amount"]} {x["operationAmount"]["currency"]["name"]}')
     else:
-        for x in new_filter_trans:
+        for x in list_trans:
             if x.get("description") == "Открытие вклада":
                 print(f'{x["date"]} {x["description"]}')
                 pattern = r'\b\d+\b'
