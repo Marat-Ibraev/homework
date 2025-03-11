@@ -73,7 +73,10 @@ def main():
         print('Пожалуйста, введите "Да" или "Нет".')
         code = input("Выводить только рублевые тразакции? Да / Нет: ").upper()
     if code == 'ДА':
-        new_filter_trans = filter_by_currency(new_filter_trans, 'RUB')
+        if menu == 1:
+            new_filter_trans = filter_by_currency(new_filter_trans, 'RUB')
+        else:
+            new_filter_trans = filter_by_currency(new_filter_trans, 'RUB', False)
 
     filter_word = input("""Отфильтровать список транзакций по определенному слову в описании? Да/Нет: """).lower()
     while filter_word not in ['да', 'нет']:
